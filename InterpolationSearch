@@ -1,0 +1,52 @@
+import random
+
+# This limits the range of the random numbers generated to the 1  and 32767
+a = range(1, 32767)
+
+# This randomly selects 100 numbers from the range with k being the limit.
+array_one = random.sample(a, k = 100)
+
+# This is used to sort the array for search.
+array_one.sort()
+
+print(array_one)
+
+N = len(array_one)
+
+def interpolationSearch(array_one, N, target):
+
+    low = 0
+    high = N - 1
+
+    while low <= high and target >= array_one[low] and target <= array_one[high]:
+        if low == high:
+            if array_one[low] == target:
+                return low;
+            return -1;
+
+        position = low + int(((float(high - low ) / (array_one[high] - array_one[low]) * (target - array_one[low]))))
+
+        if array_one[position] == target:
+            return position
+
+        if array_one[position] < target:
+            low = position + 1;
+
+        else:
+            high = position - 1
+
+    return -1
+
+
+findElement = interpolationSearch(array_one, N, 25616)
+
+if findElement != -1:
+
+    print("\nElement found at index " , findElement)
+
+else:
+    print("\nElement not in sequence.")
+
+
+
+
