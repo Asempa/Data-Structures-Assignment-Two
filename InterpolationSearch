@@ -1,10 +1,13 @@
 import random
 
+import time
+
+start = time.time()
 # This limits the range of the random numbers generated to the 1  and 32767
 a = range(1, 32767)
 
 # This randomly selects 100 numbers from the range with k being the limit.
-array_one = random.sample(a, k = 100)
+array_one = random.sample(a, k = 5000)
 
 # This is used to sort the array for search.
 array_one.sort()
@@ -12,6 +15,7 @@ array_one.sort()
 print(array_one)
 
 N = len(array_one)
+
 
 def interpolationSearch(array_one, N, target):
 
@@ -47,6 +51,8 @@ if findElement != -1:
 else:
     print("\nElement not in sequence.")
 
+end = time.time()
 
+print ("\nThe runtime = %.6f seconds" % (end - start))
 
 
